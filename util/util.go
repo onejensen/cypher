@@ -29,12 +29,32 @@ func GetOperation(reader *bufio.Reader) (bool, error) {
 	}
 }
 
+func GetOption(reader *bufio.Reader) (bool, error) {
+	for {
+		fmt.Printf("Select option (1/2):\n1. Yes.\n2. No.\n")
+		opt, err := reader.ReadString('\n')
+		if err != nil {
+			return false, err
+		}
+		opt = strings.TrimSpace(opt)
+
+		switch opt {
+		case "1":
+			return true, nil // User chose encryption
+		case "2":
+			return false, nil // User chose decryption
+		default:
+			fmt.Printf("Invalid option, please enter 1 or 2.\n")
+		}
+	}
+}
+
 // GetCipherType repeatedly gets user input until the user selects a valid cipher type
 // Input: reader - bufio.Reader object for reading from standard input
 // Output: (string, error) - The first return value is the user's selected cipher type ("ROT13", "Reverse", "Caesar"), the second return value is for any possible errors.
 func GetCipherType(reader *bufio.Reader) (string, error) {
 	for {
-		fmt.Printf("Select cipher (1/3):\n1. ROT13.\n2. Reverse.\n3. Caesar Cipher\n")
+		fmt.Printf("Select cipher (1/3):\n1. ROT13 (ONLY LATIN ALPHABET).\n2. Reverse.\n3. Caesar Cipher (ONLY LATIN ALPHABET)\n")
 		cipher, err := reader.ReadString('\n')
 		if err != nil {
 			return "", err

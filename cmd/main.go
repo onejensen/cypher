@@ -80,9 +80,16 @@ func main() {
 	fmt.Printf("%s result using %s: %s\n", operation, encoding, result)
 
 	// Wait for the user to press Enter to prevent the program from immediately ending
-	fmt.Println("Press 'Enter' to exit...")
-	_, err = reader.ReadString('\n')
+	fmt.Println("Would you like to do another operation?")
+	toChoose, err := util.GetOption(reader)
 	if err != nil {
 		fmt.Println("Error:", err)
+		return
+	}
+	if toChoose {
+		main()
+	} else {
+		fmt.Println("Thank you for using our app! (Created with love by Hao, Auri & Juanjo)")
+
 	}
 }
