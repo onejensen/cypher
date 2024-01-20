@@ -4,17 +4,26 @@ import (
 	"strings"
 )
 
-// EncryptROT13 实现ROT13加密算法
+// EncryptROT13 implements the ROT13 encryption algorithm
+// Input: input - string to be encrypted
+// Output: encrypted string
+// Working Principle: Shifts each letter in the string forward by 13 positions
 func EncryptROT13(input string) string {
 	return shiftRune(input, 13)
 }
 
-// DecryptROT13 实现ROT13解密算法
+// DecryptROT13 implements the ROT13 decryption algorithm
+// Input: input - string to be decrypted
+// Output: decrypted string
+// Working Principle: Shifts each letter in the string backward by 13 positions
 func DecryptROT13(input string) string {
 	return shiftRune(input, -13)
 }
 
-// EncryptReverse 实现Reverse加密算法
+// EncryptReverse implements the Reverse encryption algorithm
+// Input: input - string to be encrypted
+// Output: encrypted string
+// Working Principle: Reverses the order of characters in the string
 func EncryptReverse(input string) string {
 	runes := []rune(input)
 	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
@@ -23,13 +32,18 @@ func EncryptReverse(input string) string {
 	return string(runes)
 }
 
-// DecryptReverse 实现Reverse解密算法
-// 在Reverse加密中，加密和解密操作是相同的
+// DecryptReverse implements the Reverse decryption algorithm
+// Input: input - string to be decrypted
+// Output: decrypted string
+// Note: In Reverse encryption, encryption and decryption operations are the same
 func DecryptReverse(input string) string {
 	return EncryptReverse(input)
 }
 
-// shiftRune 对字符串中的每个字符进行位移
+// shiftRune shifts each character in the string by the specified amount
+// Input: input - string to be processed, shift - amount of shift
+// Output: string processed with the shift
+// Working Principle: Shifts letter characters based on the shift amount, non-letter characters remain unchanged
 func shiftRune(input string, shift int) string {
 	var result strings.Builder
 	for _, r := range input {
@@ -44,40 +58,40 @@ func shiftRune(input string, shift int) string {
 	return result.String()
 }
 
-// EncryptCaesar 加密消息使用凯撒密码
+// EncryptCaesar encrypts a message using the Caesar cipher
+// Input: message - message to be encrypted, shift - amount of shift
+// Output: encrypted message
+// Working Principle: Shifts each letter character in the message based on the shift amount, non-letter characters remain unchanged
 func EncryptCaesar(message string, shift int) string {
 	result := ""
 	for _, ch := range message {
 		if ch >= 'a' && ch <= 'z' {
-			// 对小写字母进行位移
 			shifted := (ch-'a'+rune(shift))%26 + 'a'
 			result += string(shifted)
 		} else if ch >= 'A' && ch <= 'Z' {
-			// 对大写字母进行位移
 			shifted := (ch-'A'+rune(shift))%26 + 'A'
 			result += string(shifted)
 		} else {
-			// 非字母字符保持不变
 			result += string(ch)
 		}
 	}
 	return result
 }
 
-// DecryptCaesar 解密消息使用凯撒密码
+// DecryptCaesar decrypts a message using the Caesar cipher
+// Input: message - message to be decrypted, shift - amount of shift
+// Output: decrypted message
+// Working Principle: Shifts each letter character in the message in the reverse direction based on the shift amount, non-letter characters remain unchanged
 func DecryptCaesar(message string, shift int) string {
 	result := ""
 	for _, ch := range message {
 		if ch >= 'a' && ch <= 'z' {
-			// 对小写字母进行反向位移
 			shifted := (ch-'a'-rune(shift)+26)%26 + 'a'
 			result += string(shifted)
 		} else if ch >= 'A' && ch <= 'Z' {
-			// 对大写字母进行反向位移
 			shifted := (ch-'A'-rune(shift)+26)%26 + 'A'
 			result += string(shifted)
 		} else {
-			// 非字母字符保持不变
 			result += string(ch)
 		}
 	}
