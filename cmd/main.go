@@ -79,7 +79,7 @@ func main() {
 
 		// Print the result of encryption or decryption
 		fmt.Printf("%s result using %s: %s\n", operation, encoding, result)
-		fmt.Println("Please save your password. Press Enter to continue...")
+		fmt.Println("Please save your message. Press Enter to continue...")
 
 		// Wait for the user to press Enter
 		_, _ = reader.ReadString('\n')
