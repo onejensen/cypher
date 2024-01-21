@@ -54,7 +54,7 @@ func GetOption(reader *bufio.Reader) (bool, error) {
 // Output: (string, error) - The first return value is the user's selected cipher type ("ROT13", "Reverse", "Caesar"), the second return value is for any possible errors.
 func GetCipherType(reader *bufio.Reader) (string, error) {
 	for {
-		fmt.Printf("Select cipher (1/3):\n1. ROT13 (ONLY LATIN ALPHABET).\n2. Reverse.\n3. Caesar Cipher (ONLY LATIN ALPHABET)\n")
+		fmt.Printf("Select cipher (1/3):\n1. ROT13 (ONLY LATIN ALPHABET).\n2. Reverse.\n3. Caesar Cipher (ONLY LATIN ALPHABET)\n4. BACK TO THE MAIN MENU\n")
 		cipher, err := reader.ReadString('\n')
 		if err != nil {
 			return "", err

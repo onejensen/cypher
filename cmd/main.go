@@ -74,12 +74,13 @@ func main() {
 			result = cipher.DecryptCaesar(message, shift)
 			operation = "Decryption"
 		}
+	case "Back to the previous step":
 	}
 
 	// Print the result of encryption or decryption
 	fmt.Printf("%s result using %s: %s\n", operation, encoding, result)
 
-	// Wait for the user to press Enter to prevent the program from immediately ending
+	// Ask to the user to do another operation
 	fmt.Println("Would you like to do another operation?")
 	toChoose, err := util.GetOption(reader)
 	if err != nil {
