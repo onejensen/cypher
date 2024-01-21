@@ -1,4 +1,3 @@
-version 1.0
 # Project Summary
 
 ## Project Directory Structure
