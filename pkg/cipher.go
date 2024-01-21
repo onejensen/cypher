@@ -57,7 +57,8 @@ func EncryptCaesar(message string, shift int) string {
 }
 
 // DecryptCaesar decrypts a message using the Caesar cipher.
-// It shifts each letter character in the message in the reverse direction based on the shift amount, non-letter characters remain unchanged.
+/* It shifts each letter character in the message in the reverse direction based on the shift amount, non-letter
+characters remain unchanged.*/
 func DecryptCaesar(message string, shift int) string {
 	return shiftRune(message, -shift)
 }
